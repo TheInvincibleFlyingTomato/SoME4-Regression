@@ -107,7 +107,7 @@ Looking back at it, I still think there is some magic behind linear regressions.
 <h1>Revisiting the Method of Least Squares</h1>
 <p>So why does the method of least squares give us the Best Linear Unbiased Estimation (BLUE)?</p>
 <p>Let \(\mu\) be the mean of the data set. Then, the variance of the system is defined as:</p>
-<img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe_OpwQd8qQeDyPxnmp-gZelw4jgRlq44EH6Q5h6Uvjx3FD2-OBCc4KIMCdnf3u8ICmQleRPZ9gee6fVcP9tcVoBdhY7X3TV2qrMSKNftA4Y5XrlWwlA82d8K3vQyaelvTqX8GTIw?key=Htpd89bIWzeNbhCquZM3fw">
+\[\text{var}(x)=\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}\]
 <p>Our \(\mu = 0\), because our errors are unbiased. Since \(n\) is a constant, minimizing variance in our errors is the same as minimizing</p>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeaNzPxKsWluLx-n3DI94yOQUyiIL0-fFR-gcXvNBNpH22OquzTPQJNb-x6vCiQpti7WxaH_cgeAx7jrECial2KwVoEp0GEAsFpbT8H6cL0J6OSXmaq3Pugpqd3rBURpSNkR-TT?key=Htpd89bIWzeNbhCquZM3fw">
 <p>which is our method of least squares, so our method minimizes variance.</p>
