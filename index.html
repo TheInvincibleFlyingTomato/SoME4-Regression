@@ -125,6 +125,7 @@ Looking back at it, I still think there is some magic behind linear regressions.
 In the diagram to the right, the green area represents the column space of \(\textbf{X}\). The column space is the span of the columns of \(\textbf{X}\). Simply put, it is the space where all possible vectors \(\hat{y}=\textbf{X}\beta\) live.  For the sake of visualization, the diagram is a 2D plane in a 3D space. Since \(y\) is usually not on the column space, any \(\hat{y}\) will be slightly off from the actual \(y\). This residual vector will be \(\varepsilon = y - \hat{y} = y - \textbf{X}\beta\). The goal is to minimize this vector’s length, or \(||\varepsilon||\). Since this is positive, it works to minimize \(||\varepsilon||^2\) instead. This works better by avoiding square roots. Also, notice that this is the same thing as our sum of the squares method, since this equals \(e^2_1+e^2_2+\dots+e^2_n = \sum_{i=1}^{n} (y-\hat{y})^2\).
 </p>
   <p>Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
+<p><br></p>
 <h1>Adapting the method</h1>
 <p>So, what if I want a quadratic regression? An exponential? Something even crazier?</p>
 <p>Let’s start with polynomials first. Notice that since our output can have \(n\) different inputs. If we let these be powers of \(x_i\), then the regression describes a polynomial. In other words, for a nth degree polynomial regression with \(m\) observations, if we let</p>
@@ -165,6 +166,9 @@ In the diagram to the right, the green area represents the column space of \(\te
     <br>
     <br>
 </p>
+<h1>How well are we doing?</h1>
+  <p>So, we've introduced all these way to find different functions that can match our sample. But which one should you use for a particular data set? It goes without saying, you shouldn't be trying to a quadratic relationship with a logarithmic. So, how could we evaluate how well a regression fits the data? Well, we try to minimize the variance of the residuals, so maybe that could be our function?</p>
+  <p>Unfortunatly, this has some problems. For a data set with a starting high variation, no matter what kind of regression you use, the variation of our error function will also be high. This can be fixed by dividing out the starting variation, giving us \[\frac{\text{var}(y)}{\text{var}(\hat{y})}\]</p>
 <h1>Summary</h1>
 <p>So, now to answer the age old question in math: <br>
 When will I ever use this?
