@@ -59,7 +59,7 @@ Looking back at it, I still think there is some magic behind linear regressions.
 <p>A natural choice is the sum of the squares of the residuals:</p>
 <p>\[\text{Error} = \sum_{i=1}^{n} (f(x_i)-g(x_i))^2\]</p>
 <p>The terms \(r_i= f(x_i) - g(x_i)\) are the residuals of our prediction. We square them so negatives don’t cancel out, and bigger mistakes get more weight. </p>
-<p>Minimizing this error function gives us what’s called the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s break it down, piece by piece.</p>
+<p>Minimizing this error function gives us what is known in the biz as the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s break it down, piece by piece.</p>
 <p><strong>Estimation</strong>: f(x) is a prediction model.</p>
 <p><strong>Unbiased</strong>: When we minimize our error function, the residuals average 0. Think of darts on a target:</p>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe3phwDfqK4u3AIxVx4GCWbmoqo4kK2iygUVlC4Gu321mueJB8d7ZApZ4K6QHfqQOEF8ehUiz84G1yzatuZYiecb-nhGll0-JSkoR9vIoB3yPa3D97w50NfkHBHbcWJpAE06qzaew?key=Htpd89bIWzeNbhCquZM3fw">
