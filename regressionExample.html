@@ -72,14 +72,31 @@
             .attr("cx", d => xScale(d.x))
             .attr("cy", d => yScale(d.y))
             .call(d3.drag()
+              .on("start", function(event, d) {
+                d3.select(this).raise().attr("stroke", "black");
+              })
               .on("drag", function(event, d) {
-                d.x = Math.max(0, Math.min(600, xScale.invert(event.x)));
-                d.y = Math.max(0, Math.min(400, yScale.invert(event.y)));
+                const [mouseX, mouseY] = d3.pointer(event);
+
+                // Snapping the drag position to prevent jitter
+                const newX = Math.max(0, Math.min(600, xScale.invert(mouseX)));
+                const newY = Math.max(0, Math.min(400, yScale.invert(mouseY)));
+
+                // Update point position
+                d.x = newX;
+                d.y = newY;
+
+                // Update point position on screen smoothly
                 d3.select(this)
                   .attr("cx", xScale(d.x))
                   .attr("cy", yScale(d.y));
+
+                // Recalculate and update regression line
                 updateRegression();
                 updateTable();
+              })
+              .on("end", function(event, d) {
+                d3.select(this).attr("stroke", null);
               })
             ),
           update => update
