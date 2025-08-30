@@ -142,10 +142,29 @@ In the diagram to the right, the green area represents the column space of \(\te
   <p>Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
 <h1>Adapting the method</h1>
 <p>So, what if I want a quadratic regression? An exponential? Something even crazier?</p>
-<p>Let’s start with polynomials first. Notice that since our output can have \(n\) different inputs. If we let these be powers of \(x_i\), then the regression describes a polynomial. In other words, if we let</p>
-<img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfGLveaNJouBiudZDJnUZtmmuHlnfUtCaU31K2dwoHxK2OIV_OcVZRkW9Vc6YntFwblofBdNUnTxE86W1dfxP6HoMTxVCyEC2o7O7igT5j-ONqLh5H-8yS83eLcVF6PaMhNl8eQBw?key=Htpd89bIWzeNbhCquZM3fw">
-<p>Then</p>
-<img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdAvtSHy83bW_nAwg5jwKQgb5PtnHO3F7IgcgnWmORV80zEgjV2kxe0x3J9_8AxFNg3B4Qm4rTHgNj-hyzGNLtdE3m1z9jvFGIKgRLRK2JyYoVqI_Ucdioq3V4s8tZI4_5LSw3F?key=Htpd89bIWzeNbhCquZM3fw">
+<p>Let’s start with polynomials first. Notice that since our output can have \(n\) different inputs. If we let these be powers of \(x_i\), then the regression describes a polynomial. In other words, for a nth degree polynomial regression with \(m\) observations, if we let</p>
+<p>\[\mathbf{X}=
+\begin{bmatrix}
+1 & x_1 & x_1^2 & x_1^3 & \ldots & x_1^n \\
+1 & x_2 & x_2^2 & x_2^3 & \ldots & x_2^n \\
+1 & x_3 & x_3^2 & x_3^3 & \ldots & x_3^n \\
+1 & x_4 & x_4^2 & x_4^3 & \ldots & x_4^n \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x_m & x_m^2 & x_m^3 & \ldots & x_m^n
+\end{bmatrix}
+\text{ then }
+\mathbf{x}_k^T\beta=
+\begin{bmatrix}
+1+x_k+x_k^2+x_k^3+\cdots+x_k^n
+\end{bmatrix}
+\begin{bmatrix}
+\beta_0 \\
+\beta_1 \\
+\beta_2 \\
+\beta_3 \\
+\vdots \\
+\beta_n
+\end{bmatrix}=\beta_0+\beta_1x_k+\beta_2x_k^2+\beta_3x_k^3+\cdots+\beta_nx_k^n\]</p>
 <p>where \(x^T_k\) is the kth row of \(\textbf{X}\). So, we can model any nth degree polynomial using this method.</p>
 <p>What about exponentials? Exponentials are not linear, so we can’t directly apply our standard linear least squares method. So, is that it? Is our method limited to polynomials and nothing else?</p>
 <p>
