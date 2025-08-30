@@ -57,8 +57,8 @@ Looking back at it, I still think there is some magic behind linear regressions.
     
 <h1>Method of Least Squares</h1>
 <p>A natural choice is the sum of the squares of the residuals:</p>
-<p>\[\text{Error} = \sum_{i=1}^{n} (f(x_i)-g(x_i))^2\]</p>
-<p>The terms \(r_i= f(x_i) - g(x_i)\) are the residuals of our prediction. We square them so negatives don’t cancel out, and bigger mistakes get more weight. </p>
+<p>\[\text{Error Function} = \sum_{i=1}^{n} (f(x_i)-g(x_i))^2\]</p>
+<p>The terms \(r_i= f(x_i) - g(x_i)\) are the residuals of our prediction, the discrepancy between the prediction and the actual observed values. We square them so negatives don’t cancel out, and bigger mistakes get more weight. </p>
 <p>Minimizing this error function gives us what is known in the biz as the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s break it down, piece by piece.</p>
 <p><strong>Estimation</strong>: f(x) is a prediction model.</p>
 <p><strong>Unbiased</strong>: When we minimize our error function, the residuals average 0. Think of darts on a target:</p>
@@ -108,11 +108,11 @@ Looking back at it, I still think there is some magic behind linear regressions.
 <p>So why does the method of least squares give us the Best Linear Unbiased Estimation (BLUE)?</p>
 <p>Let \(\mu\) be the mean of the data set. Then, the variance of the system is defined as:</p>
 \[\text{var}(x)=\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}\]
-<p>Our \(\mu = 0\), because our errors are unbiased. Since \(n\) is a constant, minimizing variance in our errors is the same as minimizing</p>
+<p>Our \(\mu = 0\), because our residuals are unbiased. Since \(n\) is a constant, minimizing variance in our residuals is the same as minimizing</p>
 \[\sum_{i=1}^{n}e_i^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2\]
 <p>which is our method of least squares, so our method minimizes variance.</p>
 <p>This might seem abstract, so maybe we should try a geometric view. In order to do this, we must introduce some matrix notation.</p>
-<p>We have an output vector (our data), \(\textbf{y}\), that is some linear function of an input matrix, \(\textbf{X}\), offset by some errors . In the matrix form our system then can be written as: \(\textbf{y} = \textbf{X}\beta+\varepsilon\), where \(\beta\) is the correlation we are trying to find. Our prediction model will be \(\hat{y}=\textbf{X}\beta\). This allows us to compactly write the whole data set in one equation. In the last example:</p>
+<p>We have an observed output vector (our data), \(\textbf{y}\), and we assume that it is some linear function of an input matrix, \(\textbf{X}\), offset by some errors. In the matrix form our system then can be written as: \(\textbf{y} = \textbf{X}\beta+\varepsilon\), where \(\beta\) is the correlation we are trying to find. Our prediction model will be \(\hat{y}=\textbf{X}\beta\). This allows us to compactly write the whole data set in one equation. In the last example:</p>
 \[\begin{bmatrix}3\\5\\9\\10\\20\end{bmatrix} = \begin{bmatrix}1 & 0\\1&2\\1&4\\1&6\\1&11\end{bmatrix} \begin{bmatrix}\beta_1\\\beta_2\end{bmatrix} + \begin{bmatrix}\varepsilon_1\\\varepsilon_2\\\varepsilon_3\\\varepsilon_4\\\varepsilon_5\end{bmatrix} \text{ and } \beta=\begin{bmatrix}\frac{821}{356}\\ \frac{549}{356}\end{bmatrix}\]
 <p>
     <br>
@@ -121,7 +121,7 @@ Looking back at it, I still think there is some magic behind linear regressions.
 
 <p>This allows for a geometric view using vector span.</p>
 <div style="clear:both;">
-    <p style="float: left; margin-right: 20px;">In the diagram to the right, the green area represents the column space of \(\textbf{X}\). The column space is the span of the columns of \(\textbf{X}\). Simply put, it is the space where all possible vectors \(\hat{y}=\textbf{X}\beta\) live. For our above example, that is a 2D plane in a 5D space. For the sake of visualization, the diagram is a 2D plane in a 3D space. Since \(y\) is usually not on the column space, any \(\hat{y}\) will be slightly off from the actual \(y\). This residual vector will be \(\varepsilon = y - \hat{y} = y - \textbf{X}\beta\). The goal is to minimize this vector’s length, or \(||\varepsilon||\). Since this is positive, it works to minimize \(||\varepsilon||^2\). This works better by avoiding square roots. Also, notice that this is the same thing as our sum of the squares method, since this equals \(e^2_1+e^2_2+\dots+e^2_n = \sum_{i=1}^{n} (y-\hat{y})^2\). Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
+    <p style="float: left; margin-right: 20px;">In the diagram to the right, the green area represents the column space of \(\textbf{X}\). The column space is the span of the columns of \(\textbf{X}\). Simply put, it is the space where all possible vectors \(\hat{y}=\textbf{X}\beta\) live. For our above example, that is a 2D plane in a 5D space. For the sake of visualization, the diagram is a 2D plane in a 3D space. Since \(y\) is usually not on the column space, any \(\hat{y}\) will be slightly off from the actual \(y\). This residual vector will be \(\varepsilon = y - \hat{y} = y - \textbf{X}\beta\). The goal is to minimize this vector’s length, or \(||\varepsilon||\). Since this is positive, it works to minimize \(||\varepsilon||^2\) instead. This works better by avoiding square roots. Also, notice that this is the same thing as our sum of the squares method, since this equals \(e^2_1+e^2_2+\dots+e^2_n = \sum_{i=1}^{n} (y-\hat{y})^2\). Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
       <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeJPYms1BJ15AF7NPtqY2vRUue-inhs6Ua-WkXW1pbNCraJnAGf5pEJt1D5Ey_U77h7470WUHSwGymiUZTl0OAAW4giFFR1NKLtNPkRN_oYqrAkET9kAGFGoz2Ed31EQA7SzrPqvg?key=Htpd89bIWzeNbhCquZM3fw" alt="diagram" style="margin-left: 20px; width: 50%;"/>
 </div>
 <h1>Adapting the method</h1>
