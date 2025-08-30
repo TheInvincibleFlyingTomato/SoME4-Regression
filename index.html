@@ -112,8 +112,8 @@ Looking back at it, I still think there is some magic behind linear regressions.
 \[\sum_{i=1}^{n}e_i^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2\]
 <p>which is our method of least squares, so our method minimizes variance.</p>
 <p>This might seem abstract, so maybe we should try a geometric view. In order to do this, we must introduce some matrix notation.</p>
-<p>We have an output vector (our data), \(\textbf{y}\), that is some linear function of an input matrix, \(\textbf{X}\), offset by some errors . In the matrix form our system then can be written as: \(\textbf{y} = \textbf{X}\beta+\varepsilon\), where \(\beta\) is the correlation we are trying to find. Our prediction model will be \(\hat{y}=\textbf{X}\beta). This allows us to compactly write the whole data set in one equation. In the last example:</p>
-\[\begin{bmatrix}3\\5\\9\\10\\20\end{bmatrix}=\begin{bmatrix}1 & 0\\1&2\\1&4\\1&6\\1&11\end{bmatrix}\begin{bmatrix}\beta_1\\\beta_2\end{bmatrix}+\begin{bmatrix}\varepsilon_1\\\varepsilon_2\\\varepsilon_3\\\varepsilon_4\\\varepsilon_5\end{bmatrix}\text{ and }\beta=\begin{bmatrix}\frac{821}{356}\\\frac{549}{356}\end{bmatrix}\]
+<p>We have an output vector (our data), \(\textbf{y}\), that is some linear function of an input matrix, \(\textbf{X}\), offset by some errors . In the matrix form our system then can be written as: \(\textbf{y} = \textbf{X}\beta+\varepsilon\), where \(\beta\) is the correlation we are trying to find. Our prediction model will be \(\hat{y}=\textbf{X}\beta\). This allows us to compactly write the whole data set in one equation. In the last example:</p>
+\[\begin{bmatrix}3\\5\\9\\10\\20\end{bmatrix} = \begin{bmatrix}1 & 0\\1&2\\1&4\\1&6\\1&11\end{bmatrix} \begin{bmatrix}\beta_1\\\beta_2\end{bmatrix} + \begin{bmatrix}\varepsilon_1\\\varepsilon_2\\\varepsilon_3\\\varepsilon_4\\\varepsilon_5\end{bmatrix} \text{ and } \beta=\begin{bmatrix}\frac{821}{356}\\ \frac{549}{356}\end{bmatrix}\]
 <p>
     <br>
     <br>
