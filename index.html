@@ -33,7 +33,7 @@
 <body style = "background-color=#d7d7c1;">
   <h1>How to get a comet named after you ?</h1>
   <p>When I was in Algebra 1, our teacher introduced us to these things called linear regressions. We could go into Desmos, put random points in it, and watch the computer spit out the line of best fit. Not many of us stopped to think, “How the heck is it doing that?” We just took it for granted, because, hey, that wasn’t part of the curriculum. We just needed it for good grades. 
-Looking back at it, I still think there is some magic behind linear regressions. I mean, how many of you have sat down with a paper, a pencil, some random points, and the desire to find the best fitting line? And how many of you knew that rhetorical question is exactly what I’m going to do in this article?
+<br>Looking back at it, I still think there is some magic behind linear regressions. I mean, how many of you have sat down with a paper, a pencil, some random points, and the desire to find the best fitting line? And how many of you knew that rhetorical question is exactly what I’m going to do in this article?
 </p>
   
 
@@ -70,7 +70,7 @@ Looking back at it, I still think there is some magic behind linear regressions.
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe3phwDfqK4u3AIxVx4GCWbmoqo4kK2iygUVlC4Gu321mueJB8d7ZApZ4K6QHfqQOEF8ehUiz84G1yzatuZYiecb-nhGll0-JSkoR9vIoB3yPa3D97w50NfkHBHbcWJpAE06qzaew?key=Htpd89bIWzeNbhCquZM3fw">
 <p>Pretend these two targets represent our residuals. Notice how team A’s shots are centered around the bullseye, while Team B’s are shifted down and to the left. Although both are consistent, Team A’s shots are considered unbiased, because they roughly fall around the center of the target.</p>
 <p><strong>Linear</strong>: The function is a linear combination of our input(s). Yes, you can do a regression using multiple input parameters. We will talk about this later.</p>
-<p><strong>Best</strong>: Among all the unbiased models, the one we want is the one with the smallest variance.. To understand why we want this, let's return back to targets.</p>
+<p><strong>Best</strong>: Among all the unbiased models, the one we want is the one with the smallest variance. To understand why we want this, let's return back to targets.</p>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdX0R1teRJvQ6SWCHdY1uHFHuzYQJZKNSyAtGiyAvCtxJ9M7L9F0iBcpfUDigvOToo0i3jN-jC0gKn1AxD5JmDxhpg-8CXhPXoEaTLgnsuZ-sqaAjwWBc_fSG9qKOxXD9HAT4cxmQ?key=Htpd89bIWzeNbhCquZM3fw">
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcdoh7VjG05KqHXBNVHZXmmRBpJOwJvIKYJhwjjvqeDdorxR1-Fwp3vo3C41NandlpsqjuUmrfg27r3afVwxbL5bN0cV4c9tk26CQ5NbNbolaWkK-dFYzW70i_5HzLgFcmrpSN9kA?key=Htpd89bIWzeNbhCquZM3fw">
 <p>Again, pretend these two targets are our metaphor for the residuals. Notice how both of them are roughly centered around the origin, so both are unbiased. However, Team A’s shots are more tightly clustered, so there is less variance. This gives us more confidence in their accuracy, compared to Team C.</p>
@@ -152,7 +152,7 @@ In the diagram to the right, the green area represents the column space of \(\te
 \beta_n
 \end{bmatrix}=\beta_0+\beta_1x_k+\beta_2x_k^2+\beta_3x_k^3+\cdots+\beta_nx_k^n\]</p>
 <p>where \(x^T_k\) is the kth row of \(\textbf{X}\). So, we can model any nth degree polynomial using this method.</p>
-<p>What about exponentials? Exponentials are not linear, so we can’t directly apply our standard linear least squares method. So, is that it? Is our method limited to polynomials and nothing else?</p>
+<p>What about exponentials? Exponentials are can't be expressed as a linear combination of inputs, so we can’t directly apply our standard linear least squares method. So, is that it? Is our method limited to polynomials and nothing else?</p>
 <p>
     <br>
     <br>
@@ -160,7 +160,7 @@ In the diagram to the right, the green area represents the column space of \(\te
 </p>
 <h1>Nonlinear Regressions</h1>
 <p>The general nonlinear regression doesn’t have a closed form for the best parameters.</p>
-<p>However, this doesn’t mean we can’t solve them. For example, take our exponential regression of the form \(y= ab^xU\), where \(U\) is the error term. We can take the logarithm of both sides to get \(ln(y)=ln(a)+x ln(b)+ln(U)\). If we let \(x'=x, y'=ln(y), m =ln(b), c=ln(a), \varepsilon=ln(U)\), our equation becomes \(y'=mx'+c+\varepsilon\). Yay! Now we have a linear regression that we know how to solve! We can use the above method to solve for m and c, and exponentiate them to get a and b (remember, \(b=e^m,a=e^c\)). <br>Ingenious, right? Except there’s a small problem that you may have noticed. In our exponential regression, our error term is multiplicative, not additive. Does this mean the Method of Least Squares doesn’t apply anymore? In fact, the variance stays minimized, but the bias increases; this can be corrected using a smearing estimator as an approximation. I won’t go into the details here, but for those interested in learning more, I have included links at the end for more information.</p>
+<p>However, this doesn’t mean we can’t solve them. For example, take our exponential regression of the form \(y= ab^xU\), where \(U\) is the error term. We can take the logarithm of both sides to get \(ln(y)=ln(a)+x ln(b)+ln(U)\). If we let \(x'=x, y'=ln(y), m =ln(b), c=ln(a), \varepsilon=ln(U)\), our equation becomes \(y'=mx'+c+\varepsilon\). Yay! Now we have a linear regression that we know how to solve! We can use the above method to solve for m and c, and exponentiate them to get a and b (remember, \(b=e^m,a=e^c\)). <br><br>Ingenious, right? Except there’s a small problem that you may have noticed. In our exponential regression, our error term is multiplicative, not additive. Does this mean the Method of Least Squares doesn’t apply anymore? In fact, the variance stays minimized, but the bias increases; this can be corrected using a smearing estimator as an approximation. I won’t go into the details here, but for those interested in learning more, I have included links at the end for more information.</p>
 <p>What about something harder, like \(y \sim ar^x+bs^x\) ? Or \(y \sim ax^b\)(notice how this differs from an exponential)? Or \(y \sim (ax^{2.718})+sin(bx)+log_c(x)\)!? As I said before, the general nonlinear regression doesn't have an <em>exact </em>solution. However, we can use gradient descent to fine tune our parameters to an arbitrary level of precision. We start with random parameters. Then we take the gradient of our variation \(sum_{i=1}^{n} (y_i-f(x_i:\beta))\), with respect to our parameters \(\beta_1, \beta_2, \dots ,\beta_n\). We use this gradient vector to find the direction of steepest <em>descent</em>. With each iteration, our parameters become more accurate, and we can repeat this process to the desired degree of precision.</p>
 <p>
     <br>
