@@ -9,8 +9,8 @@
 <style>
 body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* three columns for three plots */
-    grid-template-rows: 1fr;            /* one row */
+    grid-template-columns: 1fr 1fr;  /* two columns */
+    grid-template-rows: 1fr 1fr;     /* two rows */
     gap: 20px;
     height: 100vh;
     margin: 0;
@@ -18,7 +18,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Adjust plots to fill their grid cells */
 .plot {
     width: 100%;
     height: 100%;
@@ -31,10 +30,10 @@ body {
     width: 100%;
     height: 100%;
 }
-#leftSide { flex: 3; display: flex; flex-direction: column; }
+#leftSide { flex: 4; display: flex; flex-direction: column; }
 #function2D { flex: 1; width: 100%; }
 #controls { margin-top: 10px; }
-#rightSide { flex: 1; display: flex; flex-direction: column; margin-left: 15px; }
+#rightSide { flex: 0.8; display: flex; flex-direction: column; margin-left: 15px; }
 button { margin: 5px 0; padding: 6px 12px; border-radius: 8px; border: none; background: #0077cc; color: white; cursor: pointer; }
 button:hover { background: #005fa3; }
 #tableWrapper { flex: 1; overflow-y: auto; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px; }
@@ -45,32 +44,33 @@ th { background: #f0f0f0; position: sticky; top: 0; }
 </head>
 <body>
 
-<div id="surfacePlot" class="plot"></div>
-<div id="gradVectorField" class="plot"></div>
-
-<div id="functionWrapper" class="plot">
-  <div id="leftSide">
-    <div id="function2DWrapper" style="display:flex; flex-direction:column; height:100%;">
-      <div id="equationDisplay" style="text-align:center; font-size:18px; margin-bottom:5px;"></div>
-      <div id="function2D" style="flex:1;"></div>
-    </div>
-    <div id="controls">
-      <button id="randomBtn">Generate Random Points</button>
-      <button id="stepBtn">+Step</button>
-      <button id="step40Btn">+40 Steps</button>
-    </div>
-  </div>
-  <div id="rightSide">
-    <div id="tableWrapper">
-      <table id="pointsTable">
-        <thead>
-          <tr><th>#</th><th>x</th><th>y</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+<!-- (1,1) 2D graph -->
+<div id="function2DWrapper" class="plot" style="grid-column: 1; grid-row: 1; display:flex; flex-direction:column;">
+  <div id="equationDisplay" style="text-align:center; font-size:18px; margin-bottom:5px;"></div>
+  <div id="function2D" style="flex:1;"></div>
+  <div id="controls" style="margin-top:10px; text-align:center;">
+    <button id="randomBtn">Generate Random Points</button>
+    <button id="stepBtn">+Step</button>
+    <button id="step40Btn">+40 Steps</button>
   </div>
 </div>
+
+<!-- (1,2) Vector field -->
+<div id="gradVectorField" class="plot" style="grid-column: 2; grid-row: 1;"></div>
+
+<!-- (2,1) Table -->
+<div id="tableWrapper" class="plot" style="grid-column: 1; grid-row: 2; overflow-y:auto; border:1px solid #ccc; border-radius:8px;">
+  <table id="pointsTable">
+    <thead>
+      <tr><th>#</th><th>x</th><th>y</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- (2,2) SSE graph -->
+<div id="surfacePlot" class="plot" style="grid-column: 2; grid-row: 2;"></div>
+
 
 <script>
 const forms = ["A*B^x","A*x^B","A*log(x)+B"];
@@ -149,7 +149,7 @@ function plotSSE(){
     for(let i=0;i<aVals.length;i++){
         const row=[];
         for(let j=0;j<bVals.length;j++){
-            row.push(computeSSE(aVals[i],bVals[j]));
+            row.push(Math.log10(computeSSE(aVals[i],bVals[j])));
         }
         surfaceZ.push(row);
     }
@@ -276,7 +276,7 @@ function plotGradientField() {
 
 // --- Gradient Descent point with trail ---
 let gdPoint={a:Math.random()*4+0.5,b:Math.random()*4+0.5};
-let trailX=[gdPoint.a], trailY=[gdPoint.b], trailZ=[computeSSE(gdPoint.a,gdPoint.b)];
+let trailX=[gdPoint.a], trailY=[gdPoint.b], trailZ=[Math.log10(computeSSE(gdPoint.a, gdPoint.b) + 1e-6)];
 
 function plotGDPoint() {
     // --- Prepare surface Z with log scale ---
@@ -420,9 +420,10 @@ document.getElementById("stepBtn").onclick = () => {
     // Update plots
     trailX.push(gdPoint.a);
     trailY.push(gdPoint.b);
-    trailZ.push(computeSSE(gdPoint.a, gdPoint.b));
+    trailZ.push(Math.log10(computeSSE(gdPoint.a, gdPoint.b) + 1e-6));
     plotGDPoint();
     plot2DCurrentCurve();
+    plotGradientField();
 };
 document.getElementById("step40Btn").onclick = () => {
     let stepsTaken = 0;
@@ -453,7 +454,7 @@ document.getElementById("step40Btn").onclick = () => {
         stepCount++;
         trailX.push(gdPoint.a);
         trailY.push(gdPoint.b);
-        trailZ.push(computeSSE(gdPoint.a, gdPoint.b));
+        trailZ.push(Math.log10(computeSSE(gdPoint.a, gdPoint.b) + 1e-6));
 
         // Update plots live
         plotGDPoint();
@@ -475,7 +476,7 @@ document.getElementById("step40Btn").onclick = () => {
     gdPoint = { a: Math.random() * 4 + 0.5, b: Math.random() * 4 + 0.5 };
     trailX = [gdPoint.a];
     trailY = [gdPoint.b];
-    trailZ = [computeSSE(gdPoint.a, gdPoint.b)];
+    trailZ = [Math.log10(computeSSE(gdPoint.a, gdPoint.b))];
     stepCount = 0;
 
     // 3️⃣ Update plots
@@ -488,10 +489,10 @@ document.getElementById("step40Btn").onclick = () => {
 
 
 // --- Initial plots ---
-plot2DCurrentCurve();
-plotGradientField();
 plotSSE();
+plotGradientField();
 plotGDPoint();
+plot2DCurrentCurve();
 </script>
 
 </body>
