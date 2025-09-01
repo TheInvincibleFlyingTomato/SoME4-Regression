@@ -101,7 +101,7 @@
 <p>So the error function then becomes: \(\sum_{i=1}^{n} r^2_i = \sum_{i=1}^{n} (ax_i+b-g(x_i))^2= (0(a)+b -3 )^2+((2)a+b-5)^2+ . . . +((11)a+b-20)^2\)</p>
 <p>Expanding and simplifying, we end up with a big quadratic expression in a and b:</p>
 <p>\(\sum_{i=1}^{n} r^2_i = 177a^2 + 46ab + 5b^2 - 652a - 94b + 615\). </p>
-<p>This large function traces out a multivariable function that looks a lot like a parabola. This shouldn’t be too surprising, given that our function contains quadratic terms of a and b.</p>
+<p>This large error function traces out a multivariable function that looks a lot like a parabola. This shouldn’t be too surprising, given that our function contains quadratic terms of a and b.</p>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdOMuI9Gg8i1ZCZuDZROJmGKjRRQLuztSOPXdibpxjGwN5DOnlPOS_5B-bmmob7Ka1ZVx4wGocXfG0tJFi9pDDGwJZSNz_RKgtZr5PR8sCZE0VSAVUqIGy3a6P7C9cq0Hpuejv9jA?key=Htpd89bIWzeNbhCquZM3fw" style = "width: 21vw">
 <p>
     <br>
@@ -119,7 +119,7 @@
 \[\text{var}(x)=\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}\]
 <p>Our \(\mu = 0\), because our residuals are unbiased. Since \(n\) is a constant, minimizing variance in our residuals is the same as minimizing</p>
 \[\sum_{i=1}^{n}e_i^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2\]
-<p>which is the method of least squares, so our method minimizes variance.</p>
+<p>which is the same as the method of least squares, so our procedure minimizes variance.</p>
 <p>If this seems abstract, lets try a geometric view. In order to do this, we must introduce some matrix notation.</p>
 <p>We have an observed output vector (our data), \(\textbf{y}\), and we assume that it is a linear function of an input matrix, \(\textbf{X}\), offset by some errors. In the matrix form, the system then can be written as: \(\textbf{y} = \textbf{X}\beta+\varepsilon\), where \(\beta\) is the correlation we are trying to find. Our prediction model will be \(\hat{y}=\textbf{X}\beta\). This allows us to compactly write the whole data set in one equation. In the last example:</p>
 \[\begin{bmatrix}3\\5\\9\\10\\20\end{bmatrix} = \begin{bmatrix}1 & 0\\1&2\\1&4\\1&6\\1&11\end{bmatrix} \begin{bmatrix}\beta_1\\\beta_2\end{bmatrix} + \begin{bmatrix}\varepsilon_1\\\varepsilon_2\\\varepsilon_3\\\varepsilon_4\\\varepsilon_5\end{bmatrix} \text{ and } \beta=\begin{bmatrix}\frac{821}{356}\\ \frac{549}{356}\end{bmatrix}\]
@@ -136,7 +136,7 @@ In the diagram to the right, the green area represents the column space of \(\te
   <p>Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
 <p><br></p>
 <h1>Adapting the method</h1>
-<p>So, what if I want a quadratic regression? An exponential? Something even crazier?</p>
+<p>So what if a line doesn't fit the data? What if I need a quadratic, or an exponential, or something even crazier?</p>
 <p>Let’s start with polynomials first. Notice that since the output can have \(n\) different inputs. If we let these be powers of \(x_i\), then the regression describes a polynomial. In other words, for a nth degree polynomial regression with \(m\) observations, if we let</p>
 <p>\[\mathbf{X}=
 \begin{bmatrix}
