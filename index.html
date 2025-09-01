@@ -147,7 +147,7 @@ In the diagram to the right, the green area represents the column space of \(\te
 <p><br></p>
 <h2>Adapting the method - Nonlinear Regressions</h2>
 <p>So what if a line doesn't fit the data? What if I need a quadratic, or an exponential, or something even crazier?</p>
-<p>Let’s start with polynomials first. Notice that since the output can have \(n\) different inputs. If we let these be powers of \(x_i\), then the regression describes a polynomial. In other words, for a nth degree polynomial regression with \(m\) observations, if we let</p>
+<p>Let’s start with polynomials first. Notice that the output can have \(n\) different inputs. If we let these be powers of \(x_i\), then the regression describes a polynomial. In other words, for a nth degree polynomial regression with \(m\) observations, if we let</p>
 <p>\[\mathbf{X}=
 \begin{bmatrix}
 1 & x_1 & x_1^2 & x_1^3 & \ldots & x_1^n \\
@@ -170,7 +170,7 @@ In the diagram to the right, the green area represents the column space of \(\te
 \vdots \\
 \beta_n
 \end{bmatrix}=\beta_0+\beta_1x_k+\beta_2x_k^2+\beta_3x_k^3+\cdots+\beta_nx_k^n\]</p>
-<p>where \(x^T_k\) is the kth row of \(\textbf{X}\). So, we can model any nth degree polynomial using this method.</p>
+<p>where \(x^T_k\) is the kth row of \(\textbf{X}\). So, we can model any nth degree polynomial using this method!</p>
 <p>What about exponentials? Exponentials can't be expressed as a linear combination of inputs, so we can’t directly apply our standard linear least squares method. So, is that it? Is our method limited to polynomials and nothing more?</p>
 <p>
     <br>
