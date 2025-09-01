@@ -39,15 +39,15 @@
 </head>    
 
 <body style = "background-color=#d7d7c1;">
-  <h1 style="font-size: 72px; text-align: center:>Regressions: The Math Behind the Magic</h1>
-  <h1>Once upon a time...</h1>
-  <p>When I was in Algebra 1, our teacher introduced us to the concept of linear regressions. We could go into Desmos, put random data points in a table, and watch the computer spit out the line of best fit. Not many of us stopped to think, “How the heck is it doing that?” We just took it for granted, because, hey, that wasn’t our problem. 
+<h1 style="font-size: 72px; text-align: center;" >Regressions: The Math Behind the Magic</h1>
+<h2>Once upon a time...</h2>
+<p>When I was in Algebra 1, our teacher introduced us to the concept of linear regressions. We could go into Desmos, put random data points in a table, and watch the computer spit out the line of best fit. Not many of us stopped to think, “How the heck is it doing that?” We just took it for granted, because, hey, that wasn’t our problem. 
 <br>Looking back at it, I still think there is some magic behind linear regressions. I mean, how many of you have sat down with a paper, a pencil, some random points, and the desire to find the best fitting line? And how many of you knew that rhetorical question is exactly what I’m going to do in this article?
 </p>
   
 
-  <h1>Regressions</h1>
-  <p>For those who need a refresher, regression models take a sample of data, such as points on a graph, and try to find a relationship between the independent parameters (x) and the output (g(x)). In my algebra class, we had points on a graph, and Desmos gave us an association between x and g(x) in the form of some function f(x), similar to the graphic below.
+<h2>Regressions</h2>
+<p>For those who need a refresher, regression models take a sample of data, such as points on a graph, and try to find a relationship between the independent parameters (x) and the output (g(x)). In my algebra class, we had points on a graph, and Desmos gave us a linear association between x and g(x) in the form of some function f(x), similar to the graphic below.
 </p>
   <iframe src="regressionExample.html" 
         style="width:52.08vw; 
@@ -58,31 +58,29 @@
   
 
 
-<h1>Linear Regressions</h1>
-<p>So you sit down. Maybe our points are \(p ={(0,3), (2, 5), (4, 9), (6,10), (11, 20)}\). We can define a function \(g(x)\) that matches the data: \(g(0)= 3, g(2) = 5\), and so on. Let's call the relation function \(f(x)\). It would seem logical to try to minimize some error function between the two, giving us the optimal line. However, then we run into a problem.</p>
+<h2>Linear Regressions</h2>
+<p>So you sit down. Let our points be \(p ={(0,3), (2, 5), (4, 9), (6,10), (11, 20)}\). We can define a function \(g(x)\) that matches the data: \(g(0)= 3, g(2) = 5\), and so on. Let's call the relation function \(f(x)\). It would seem logical to try to minimize some error function between the two functions, giving us the optimal line. However, then we run into a problem.</p>
 <p><em>What should the error function be?</em>
 </p>
 <p>
     <br>
     <br>
     <br>
-    <br>
-    <br>
 </p>
     
-<h1>Method of Least Squares</h1>
+<h2>Method of Least Squares</h2>
 <p>A natural choice is the sum of the squares of the residuals:</p>
 <p>\[\text{Error Function} = \sum_{i=1}^{n} (f(x_i)-g(x_i))^2\]</p>
 <p>The terms \(r_i= f(x_i) - g(x_i)\) are the residuals of our prediction, the difference between the prediction and the actual observed values. We square them so negatives don’t cancel out, and bigger mistakes get more weight. </p>
-<p>Minimizing this error function gives us what is known in the biz as the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s break it down, piece by piece.</p>
-<p><strong>Estimation</strong>: f(x) is a prediction model.</p>
+<p>Minimizing this error function by varying f(x) gives us what is known in the biz as the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s break it down, piece by piece.</p>
+<p><strong>Estimation</strong>: The function f(x) is an estimation or prediction model.</p>
 <p><strong>Unbiased</strong>: When we minimize the error function, the residuals average to 0. Think of darts on a target:</p>
 <figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe3phwDfqK4u3AIxVx4GCWbmoqo4kK2iygUVlC4Gu321mueJB8d7ZApZ4K6QHfqQOEF8ehUiz84G1yzatuZYiecb-nhGll0-JSkoR9vIoB3yPa3D97w50NfkHBHbcWJpAE06qzaew?key=Htpd89bIWzeNbhCquZM3fw">
 <figcaption style="font-size: 0.8em; color: gray;">Source: Noise: A Flaw in Human Judgment by Cass R. Sunstein, Daniel Kahneman, and Olivier Sibony</figcaption>
 </figure>
 <p>Imagine these two targets represent our residuals. Notice how team A’s shots are centered around the bullseye, while Team B’s are shifted down and to the left. Although both are clustered tightly, Team A’s shots are considered unbiased, because they roughly fall around the center of the target.</p>
-<p><strong>Linear</strong>: The function is a linear combination of the input(s). Yes, you can do a regression using multiple input parameters. We will talk about this later.</p>
+<p><strong>Linear</strong>: The function is a linear combination of the input(s). (Yes, you can also  do a regression using multiple input parameters. We will talk about this later.)</p>
 <p><strong>Best</strong>: Among all the unbiased models, the one we want is the one with the smallest variance. To understand why we want this, let's return back to targets.</p>
 <figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdX0R1teRJvQ6SWCHdY1uHFHuzYQJZKNSyAtGiyAvCtxJ9M7L9F0iBcpfUDigvOToo0i3jN-jC0gKn1AxD5JmDxhpg-8CXhPXoEaTLgnsuZ-sqaAjwWBc_fSG9qKOxXD9HAT4cxmQ?key=Htpd89bIWzeNbhCquZM3fw">
@@ -101,14 +99,12 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
 </p>
     
-<h1>Finishing the Example</h1>
-<p>Let's apply this to our example. Since \(f(x)\) is a linear function, we can write it as \(f(x)=ax+b\) </p>
+<h2>Finishing the Example</h2>
+<p>Let's apply the method of least squares to our example. Since \(f(x)\) is a linear function, we can write it as \(f(x)=ax+b\) </p>
 <p>The residuals are then: \(r_i= ax_i+b-g(x_i)\).</p>
-<p>So the error function then becomes: \(\sum_{i=1}^{n} r^2_i = \sum_{i=1}^{n} (ax_i+b-g(x_i))^2= (0(a)+b -3 )^2+((2)a+b-5)^2+ \dots +((11)a+b-20)^2\)</p>
+<p>So the error function becomes: \(\sum_{i=1}^{n} r^2_i = \sum_{i=1}^{n} (ax_i+b-g(x_i))^2= (0(a)+b -3 )^2+((2)a+b-5)^2+ \dots +((11)a+b-20)^2\)</p>
 <p>Expanding and simplifying, we end up with a big quadratic expression in a and b:</p>
 <p>\(\sum_{i=1}^{n} r^2_i = 177a^2 + 46ab + 5b^2 - 652a - 94b + 615\). </p>
 <p>This large error function traces out a multivariable function that looks a lot like a parabola. This shouldn’t be too surprising, given that our function contains quadratic terms of a and b.</p>
@@ -117,13 +113,13 @@
     <br>
     <br>
 </p>
-<p>To find the minimum point, we can set the partial derivatives of the function to 0 and solve.</p>
+<p>To find the minimum point, we can set the partial derivatives of the function to 0 and solve for \(a\) and \(b\)</p>
 <p>In the end, the solutions come out to be \((\frac{549}{356},\frac{821}{356})\). Not the prettiest numbers, but it works as an example.</p>
 <p>Looking back at what this means, our desired linear regression is \(y=\frac{549}{356}x+\frac{821}{356}\) ∎</p>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcH3jINfht3xvlNEkQKp1s9kCudLVJ43qWjznzYEEGSoBfVL06ALYaJhjQTwxrkhsXyB5xdCbYBrULLrvKVKMmedQm0KDJCmfsymjmBkAqlg9ZzTeJ2fEAD5eXycE7VvIvf57uySA?key=Htpd89bIWzeNbhCquZM3fw" style = "width: 21vw">
 <p>A pretty good fit indeed!</p>
     
-<h1>Revisiting the Method of Least Squares</h1>
+<h2>Revisiting the Method of Least Squares</h2>
 <p>So why does the method of least squares give us the Best Linear Unbiased Estimation (BLUE)?</p>
 <p>Let \(\mu\) be the mean of the data set. Then, the variance of the system is defined as:</p>
 \[\text{var}(x)=\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}\]
@@ -145,7 +141,7 @@ In the diagram to the right, the green area represents the column space of \(\te
 </p>
   <p>Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
 <p><br></p>
-<h1>Adapting the method</h1>
+<h2>Adapting the method - Nonlinear Regressions</h2>
 <p>So what if a line doesn't fit the data? What if I need a quadratic, or an exponential, or something even crazier?</p>
 <p>Let’s start with polynomials first. Notice that since the output can have \(n\) different inputs. If we let these be powers of \(x_i\), then the regression describes a polynomial. In other words, for a nth degree polynomial regression with \(m\) observations, if we let</p>
 <p>\[\mathbf{X}=
@@ -177,7 +173,7 @@ In the diagram to the right, the green area represents the column space of \(\te
     <br>
     <br>
 </p>
-<h1>Nonlinear Regressions</h1>
+<h2>Nonlinear Regressions</h2>
 <p style="line-height=1.5;">The general nonlinear regression doesn’t have a closed form for the best parameters.</p>
 <p style="line-height=1.5;">However, this doesn’t mean we can’t solve them. For example, take our exponential regression of the form \(y= ab^xU\), where \(U\) is the error term. We can take the logarithm of both sides to get \(ln(y)=ln(a)+x ln(b)+ln(U)\). If we let \(x'=x, y'=ln(y), m =ln(b), c=ln(a), \varepsilon=ln(U)\), our equation becomes \(y'=mx'+c+\varepsilon\). Yay! Now we have a linear regression that we know how to solve! We can use the above method to solve for m and c, and exponentiate them to get a and b (remember, \(b=e^m,a=e^c\)). <br><br>Ingenious, right? Except there’s a small problem that you may have noticed. In our exponential regression, our error term is multiplicative, not additive. Does this mean the Method of Least Squares doesn’t apply anymore? In fact, the variance stays minimized, but the bias increases; this can be corrected using a smearing estimator as an approximation. I won’t go into the details here, but for those interested in learning more, I have included links at the end.</p>
 <p style="line-height=1.5;">What about something harder, like \(y \sim ar^x+bs^x\) ? Or \(y \sim ax^b\)(notice how this differs from an exponential)? Or \(y \sim (ax^{2.718})+sin(bx)+log_c(x)\)!? As I said before, the general nonlinear regression doesn't have an <em>exact </em>solution. However, we can use gradient descent to fine tune the parameters to the desired level of precision. We start with random parameters. Then we take the gradient of our variation equation \(\sum_{i=1}^{n} (y_i-f(x_i:\beta))\), with respect to the parameters \(\beta_1, \beta_2, \dots ,\beta_n\). We use this gradient vector to find the direction of steepest <em>descent</em>. With each iteration, the parameters become more accurate, and we can repeat this process to the desired degree of precision.</p>
@@ -185,19 +181,19 @@ In the diagram to the right, the green area represents the column space of \(\te
     <br>
     <br>
 </p>
-<h1>How well are we doing?</h1>
+<h2>How well are we doing?</h2>
   <p>So, I've introduced all these ways to find different functions that can match the sample. But which one should you use for a particular data set? It goes without saying, you shouldn't be trying to a quadratic relationship with a logarithmic. So, how could we evaluate how well a regression fits the data? Well, we try to minimize the variance of the residuals, so maybe that could be our function?</p>
   <p>Unfortunatly, this has some problems. For a data set with a starting high variation, no matter what kind of regression you use, the variation of our error function will also be high. This can be fixed by dividing out the starting variation, giving us \[\frac{\text{var}(\hat{y})}{\text{var}(y)} = \frac{\sum (y_i-\hat{y}_i)^2}{\sum (y_i-\bar{y})^2}\]</p>
   <p>One last touch. Better fits mean lower residual variation, so our expression goes toward 0. To change this, we just subtract it from 1, so numbers near 1 indicate good association, while numbers near 0 indicate bad association. In the end, \[R^2 = 1 - \frac{\sum (y_i-\hat{y}_i)^2}{\sum (y_i-\bar{y})^2}\] giving us the well-known <em>Correlation of Determination</em>. Although it's written as \(R^2\), it can be negative if the prediction is bad enough that the model <em>adds</em> more variance into the system, rather than reducing variance.</p>
   <p>In linear regressions with only one input parameter, it is also useful to know whether the association is positive or negative. For this we have \(r\), which is just the square root of the Coefficient of Determination, and negative or postive depending on whether the slope of the line is positive or negative.</p>
   <p>Why they didn't just call the coefficient of determination \(r^2\), I don't know. But these two indicators can tell you a lot about the regression itself. For our example at the start, these coefficients are \(R^2\approx0.97764\), and \(r\approx0.98875\), indicating a strong positive relationship between x and y, so a linear regression is probably the best regression for the job.</p>
   <p><br></p>
-<h1>Gradient Descent Simulation</h1>
+<h2>Gradient Descent Simulation</h2>
 <p>Below is a crude simulation on how gradient descent works. The model starts out with random parameters for the data, leading to really bad fits, which can be seen in the \(R^2\) value. Pressing the "+Step" button moves the point in the direction of steepest descent to minimize the error function. The error function itself is shown as a 3D surface. I would recommend using "+Step" for the first few iterations, so you can see how the model starts moving in the general direction of the minimum. After that, you can use "+40 Steps" to watch it home in on the minimum. Refresh the page to try different types of regressions i.e. logarithmic, exponential, powers, etc.</p>
   <div class="GradientDescent">
     <iframe src="zGradientDescent.html" style="border:none; text-align: center; width: 85vw; height: 1200px"></iframe>
   </div>
-    <h1>Summary</h1>
+    <h2>Summary</h2>
 <p>So, now to answer the age old question in math: <br> 
   When will I ever use this?<br>
 <em>Artificial Intelligence</em>. If you’ve ever used ChatGPT, or Google Gemini before, you were, unintentionally, relying on linear regressions. They are used to train the intelligence, test it, and even evaluate how well it performed on said tests. How they are used is arguably just as interesting as how they work, and I strongly encourage you to check the links at the end to learn about them.
@@ -205,7 +201,7 @@ Regressions are powerful tools in applied math. Built from the fundamentals of p
 But, for now, I think I’ll stick with drawing lines through points.  
 </p>
 <p></p>
-<h1>Resources</h1>
+<h2>Resources</h2>
 <p>1. Simplest description of smearing estimators I could find: <a href="https://en.wikipedia.org/wiki/Smearing_retransformation" target="_blank"> Smearing Estimators </a> </p> 
 <p>2. Wikipedia's Series on Regression Analysis: <a href="https://en.wikipedia.org/wiki/Regression_analysis" target="_blank">Regression Analysis</a> </p> 
 <p>3. An actual formula for calculating linear regressions: <a href="https://github.com/TheInvincibleFlyingTomato/SoME4-Regression/blob/main/AnExactFormulaForLR.pdf" target="_blank">An Exact Formula for Linear Regressions</a> </p> 
