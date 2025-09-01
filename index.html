@@ -58,7 +58,7 @@
 
 
 <h1>Linear Regressions</h1>
-<p>So you sit down. Maybe our points are \(p ={(0,3), (2, 5), (4, 9), (6,10), (11, 20)}\). We can define a function \(g(x)\) that matches the data: \(g(0)= 3, g(2) = 5\), and so on. The relationship function could be \(f(x)\). It would seem logical to try to minimize some error function between the two, giving us the optimal line. However, then we run into a problem.</p>
+<p>So you sit down. Maybe our points are \(p ={(0,3), (2, 5), (4, 9), (6,10), (11, 20)}\). We can define a function \(g(x)\) that matches the data: \(g(0)= 3, g(2) = 5\), and so on. Let's call the relation function \(f(x)\). It would seem logical to try to minimize some error function between the two, giving us the optimal line. However, then we run into a problem.</p>
 <p><em>What should the error function be?</em>
 </p>
 <p>
@@ -72,7 +72,7 @@
 <h1>Method of Least Squares</h1>
 <p>A natural choice is the sum of the squares of the residuals:</p>
 <p>\[\text{Error Function} = \sum_{i=1}^{n} (f(x_i)-g(x_i))^2\]</p>
-<p>The terms \(r_i= f(x_i) - g(x_i)\) are the residuals of our prediction, the discrepancy between the prediction and the actual observed values. We square them so negatives don’t cancel out, and bigger mistakes get more weight. </p>
+<p>The terms \(r_i= f(x_i) - g(x_i)\) are the residuals of our prediction, the difference between the prediction and the actual observed values. We square them so negatives don’t cancel out, and bigger mistakes get more weight. </p>
 <p>Minimizing this error function gives us what is known in the biz as the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s break it down, piece by piece.</p>
 <p><strong>Estimation</strong>: f(x) is a prediction model.</p>
 <p><strong>Unbiased</strong>: When we minimize the error function, the residuals average to 0. Think of darts on a target:</p>
