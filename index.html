@@ -30,6 +30,11 @@
       margin: 10px; /* space around the image */
       width: 200px; /* optional: control image size */
     }
+    .GradientDescent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 </head>    
 
@@ -177,8 +182,10 @@ In the diagram to the right, the green area represents the column space of \(\te
   <p>In linear regressions with only one input parameter, it is also useful to know whether the correlation is positive or negative. Then we have \(r\), which is just the square root of the Coefficient of Determination, and negative or postive depending on whether the slope of the line is positive or negative.</p>
   <p>Why they didn't just call the coefficient of determination \(r^2\), I don't know. But these two indicators can tell you a lot about the regression itself. For our example at the start, these coefficients are \(R^2\approx0.97764\), and \(r\approx0.98875\), indicating a strong positive relationship between x and y, so a linear regression is probably the best regression for the job.</p>
   <p><br></p>
-  <iframe src="zGradientDescent.html" style="border:none; text-align: center; width: 78vw; height: 600px"></iframe>
-  <h1>Summary</h1>
+  <div class="GradientDescent">
+    <iframe src="zGradientDescent.html" style="border:none; text-align: center; width: 78vw; height: 600px"></iframe>
+  </div>
+    <h1>Summary</h1>
 <p>So, now to answer the age old question in math: <br> 
   When will I ever use this?<br>
 <em>Artificial Intelligence</em>. If you’ve ever used ChatGPT, or Google Gemini before, you were, unintentionally, relying on linear regressions. They are used to train the intelligence, test it, and even evaluate how well it performed on said tests. How they are used is arguably just as interesting as how they work, and I strongly encourage you to check the links at the end to learn about them.
