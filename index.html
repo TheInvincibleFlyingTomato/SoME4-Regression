@@ -85,12 +85,12 @@
 <p><strong>Best</strong>: Among all the unbiased models, the one we want is the one with the smallest variance. To understand why we want this, let's return back to targets.</p>
 <figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdX0R1teRJvQ6SWCHdY1uHFHuzYQJZKNSyAtGiyAvCtxJ9M7L9F0iBcpfUDigvOToo0i3jN-jC0gKn1AxD5JmDxhpg-8CXhPXoEaTLgnsuZ-sqaAjwWBc_fSG9qKOxXD9HAT4cxmQ?key=Htpd89bIWzeNbhCquZM3fw">
-<figcaption style="font-size: 0.8em; color: gray;">Source: Noise by Cass R. Sunstein, Daniel Kahneman, and Olivier Sibony</figcaption>
-</figure>
-<figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcdoh7VjG05KqHXBNVHZXmmRBpJOwJvIKYJhwjjvqeDdorxR1-Fwp3vo3C41NandlpsqjuUmrfg27r3afVwxbL5bN0cV4c9tk26CQ5NbNbolaWkK-dFYzW70i_5HzLgFcmrpSN9kA?key=Htpd89bIWzeNbhCquZM3fw">
 <figcaption style="font-size: 0.8em; color: gray;">Source: Noise by Cass R. Sunstein, Daniel Kahneman, and Olivier Sibony</figcaption>
-</figure>  
+</figure>
+
+
+
 <p>Again, pretend these two targets are a metaphor for the residuals. Notice how both of them are roughly centered around the origin, so both are unbiased. However, Team A’s shots are more tightly clustered, so there is less variance. This gives us more confidence in their accuracy, compared to Team C.</p>
 <p>We will revisit this idea of <em>Best</em> later. An intuitive proof requires a matrix representation, which is easier to approach with an example.</p>
 <p>The main idea is we want our errors to cluster tightly around zero, like Team A’s shot clustering around the bullseye.</p>
@@ -126,7 +126,7 @@
 <p>So why does the method of least squares give us the Best Linear Unbiased Estimation (BLUE)?</p>
 <p>Let \(\mu\) be the mean of the data set. Then, the variance of the system is defined as:</p>
 \[\text{var}(x)=\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}\]
-<p>Our \(\mu = 0\), because our residuals are unbiased. Since \(n\) is a constant, minimizing variance in our residuals is the same as minimizing</p>
+<p>Our \(\mu = 0\), because the residuals are unbiased. Since \(n\) is a constant, minimizing variance in our residuals is the same as minimizing</p>
 \[\sum_{i=1}^{n}e_i^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2\]
 <p>which is the same as the method of least squares, so our procedure minimizes variance.</p>
 <p>If this seems abstract, lets try a geometric view. In order to do this, we must introduce some matrix notation.</p>
