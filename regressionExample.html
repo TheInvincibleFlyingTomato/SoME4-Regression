@@ -46,7 +46,12 @@
 
     const plotArea = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-    let points = [];
+    let points = d3.range(10).map(() => ({
+      id: Date.now() + Math.random(),
+      x: Math.random() * 600,
+      y: Math.random() * 400
+    }));
+
 
     const xScale = d3.scaleLinear().domain([0, 600]).range([0, width]);
     const yScale = d3.scaleLinear().domain([0, 400]).range([height, 0]);
