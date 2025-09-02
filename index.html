@@ -73,7 +73,7 @@
 <p>A natural choice is the sum of the squares of the residuals:</p>
 <p>\[\text{Error Function} = \sum_{i=1}^{n} (f(x_i)-g(x_i))^2\]</p>
 <p>The terms \(r_i= f(x_i) - g(x_i)\) are the residuals of our prediction, the difference between the prediction and the actual observed values. We square them so negatives don’t cancel out, and bigger mistakes get more weight. </p>
-<p>Minimizing this error function by varying f(x) gives us what is known in the biz as the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s break it down, piece by piece.</p>
+<p>Minimizing this error function by varying f(x) gives us what is known in the biz as the <strong>Best Linear Unbiased Estimation (BLUE)</strong>. To see what this means, let’s take it apart, piece by piece.</p>
 <p><strong>Estimation</strong>: The function f(x) is an estimation or prediction model.</p>
 <p><strong>Unbiased</strong>: When we minimize the error function, the residuals average to 0. Think of darts on a target:</p>
 <figure>
@@ -82,7 +82,7 @@
 </figure>
 <p>Imagine these two targets represent our residuals. Notice how team A’s shots are centered around the bullseye, while Team B’s are shifted down and to the left. Although both are clustered tightly, Team A’s shots are considered unbiased, because they roughly fall around the center of the target.</p>
 <p><strong>Linear</strong>: The function is a linear combination of the input(s). (Yes, you can also  do a regression using multiple input parameters. We will talk about this later.)</p>
-<p><strong>Best</strong>: Among all the unbiased models, the one we want is the one with the smallest variance. To understand why we want this, let's return back to targets.</p>
+<p><strong>Best</strong>: Among all the unbiased models, the one we want is the one with the smallest variance. To understand why we want this, let's go back to the targets.</p>
 <figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdX0R1teRJvQ6SWCHdY1uHFHuzYQJZKNSyAtGiyAvCtxJ9M7L9F0iBcpfUDigvOToo0i3jN-jC0gKn1AxD5JmDxhpg-8CXhPXoEaTLgnsuZ-sqaAjwWBc_fSG9qKOxXD9HAT4cxmQ?key=Htpd89bIWzeNbhCquZM3fw">
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcdoh7VjG05KqHXBNVHZXmmRBpJOwJvIKYJhwjjvqeDdorxR1-Fwp3vo3C41NandlpsqjuUmrfg27r3afVwxbL5bN0cV4c9tk26CQ5NbNbolaWkK-dFYzW70i_5HzLgFcmrpSN9kA?key=Htpd89bIWzeNbhCquZM3fw">
@@ -109,7 +109,7 @@
 <p>
     <br>
 </p>
-<p>To find the minimum point, we can set the partial derivatives of the function to 0 and solve for \(a\) and \(b\)</p>
+<p>To find the minimum point, we can set the partial derivatives of the function to 0 and solve for \(a\) and \(b\).</p>
 <p>In the end, the solutions come out to be \((\frac{549}{356},\frac{821}{356})\). Not the prettiest numbers, but it works as an example.</p>
 <p>Looking back at what this means, our desired linear regression is \(y=\frac{549}{356}x+\frac{821}{356}\).</p>
 <p>Plot below shows our original dataset, alongwith the linear fit we came up with.</p>
@@ -123,7 +123,7 @@
 <p>Our \(\mu = 0\), because the residuals are unbiased. Since \(n\) is a constant, minimizing variance in our residuals is the same as minimizing</p>
 \[\sum_{i=1}^{n}e_i^2=\sum_{i=1}^{n}(y_i-\hat{y}_i)^2\]
 <p>which is the same as the method of least squares, so our procedure minimizes variance.</p>
-<p>If this seems abstract, lets try a geometric view. In order to do this, we must introduce some matrix notation.</p>
+<p>If this seems abstract, lets try a geometric view. In order to do this, we introduce matrix notations.</p>
 <p>We have an observed output vector (our data), \(\textbf{y}\), and we assume that it is a linear function of an input matrix, \(\textbf{X}\), offset by some errors. In the matrix form, the system then can be written as: \(\textbf{y} = \textbf{X}\beta+\varepsilon\), where \(\beta\) is the correlation we are trying to find. Our prediction model will be \(\hat{y}=\textbf{X}\beta\). This allows us to compactly write the whole data set in one equation. In the last example:</p>
 \[\begin{bmatrix}3\\5\\9\\10\\20\end{bmatrix} = \begin{bmatrix}1 & 0\\1&2\\1&4\\1&6\\1&11\end{bmatrix} \begin{bmatrix}\beta_1\\\beta_2\end{bmatrix} + \begin{bmatrix}\varepsilon_1\\\varepsilon_2\\\varepsilon_3\\\varepsilon_4\\\varepsilon_5\end{bmatrix} \text{ and } \beta=\begin{bmatrix}\frac{821}{356}\\ \frac{549}{356}\end{bmatrix}\]
 <p>
