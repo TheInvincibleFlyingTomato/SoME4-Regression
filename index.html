@@ -67,7 +67,6 @@
 </p>
 <p>
     <br>
-    <br>
 </p>
     
 <h2>Method of Least Squares</h2>
@@ -97,8 +96,6 @@
 <p>The main idea is we want our errors to cluster tightly around zero, like Team A’s shot clustering around the bullseye.</p>
 <p>
     <br>
-    <br>
-    <br>
 </p>
     
 <h2>Finishing the Example</h2>
@@ -114,11 +111,12 @@
 </p>
 <p>To find the minimum point, we can set the partial derivatives of the function to 0 and solve for \(a\) and \(b\)</p>
 <p>In the end, the solutions come out to be \((\frac{549}{356},\frac{821}{356})\). Not the prettiest numbers, but it works as an example.</p>
-<p>Looking back at what this means, our desired linear regression is \(y=\frac{549}{356}x+\frac{821}{356}\) ∎</p>
+<p>Looking back at what this means, our desired linear regression is \(y=\frac{549}{356}x+\frac{821}{356}\).</p>
+<p>Plot below shows our original dataset, alongwith the linear fit we came up with. A pretty good fit indeed!</p>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcH3jINfht3xvlNEkQKp1s9kCudLVJ43qWjznzYEEGSoBfVL06ALYaJhjQTwxrkhsXyB5xdCbYBrULLrvKVKMmedQm0KDJCmfsymjmBkAqlg9ZzTeJ2fEAD5eXycE7VvIvf57uySA?key=Htpd89bIWzeNbhCquZM3fw" style = "width: 21vw">
-<p>A pretty good fit indeed!</p>
 <p><br></p>
-<h2>Revisiting the Method of Least Squares</h2>
+
+ <h2>Exploring the Method of Least Squares further</h2>
 <p>So why does the method of least squares give us the Best Linear Unbiased Estimation (BLUE)?</p>
 <p>Let \(\mu\) be the mean of the data set. Then, the variance of the system is defined as:</p>
 \[\text{var}(x)=\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}\]
@@ -129,7 +127,6 @@
 <p>We have an observed output vector (our data), \(\textbf{y}\), and we assume that it is a linear function of an input matrix, \(\textbf{X}\), offset by some errors. In the matrix form, the system then can be written as: \(\textbf{y} = \textbf{X}\beta+\varepsilon\), where \(\beta\) is the correlation we are trying to find. Our prediction model will be \(\hat{y}=\textbf{X}\beta\). This allows us to compactly write the whole data set in one equation. In the last example:</p>
 \[\begin{bmatrix}3\\5\\9\\10\\20\end{bmatrix} = \begin{bmatrix}1 & 0\\1&2\\1&4\\1&6\\1&11\end{bmatrix} \begin{bmatrix}\beta_1\\\beta_2\end{bmatrix} + \begin{bmatrix}\varepsilon_1\\\varepsilon_2\\\varepsilon_3\\\varepsilon_4\\\varepsilon_5\end{bmatrix} \text{ and } \beta=\begin{bmatrix}\frac{821}{356}\\ \frac{549}{356}\end{bmatrix}\]
 <p>
-    <br>
     <br>
 </p>
 
@@ -169,7 +166,6 @@ In the diagram to the right, the green area represents the column space of \(\te
 <p>What about exponentials? Exponentials can't be expressed as a linear combination of inputs, so we can’t directly apply our standard linear least squares method. So, is that it? Is our method limited to polynomials and nothing more?</p>
 <p>
     <br>
-    <br>
 </p>
 <h2>Nonlinear Regressions</h2>
 <p style="line-height=1.5;">The general nonlinear regression doesn’t have a closed form for the best parameters.</p>
@@ -177,17 +173,16 @@ In the diagram to the right, the green area represents the column space of \(\te
 <p style="line-height=1.5;">What about something harder, like \(y \sim ar^x+bs^x\) ? Or \(y \sim ax^b\)(notice how this differs from an exponential)? Or \(y \sim (ax^{2.718})+sin(bx)+log_c(x)\)!? As I said before, the general nonlinear regression doesn't have an <em>exact </em>solution. However, we can use gradient descent to fine tune the parameters to the desired level of precision. We start with random parameters. Then we take the gradient of our variation equation \(\sum_{i=1}^{n} (y_i-f(x_i:\beta))\), with respect to the parameters \(\beta_1, \beta_2, \dots ,\beta_n\). We use this gradient vector to find the direction of steepest <em>descent</em>. With each iteration, the parameters become more accurate, and we can repeat this process to the desired degree of precision.</p>
 <p>
     <br>
-    <br>
 </p>
 <h2>How well are we doing?</h2>
-  <p>So, I've introduced all these ways to find different functions that can match the sample. But which one should you use for a particular data set? It goes without saying, you shouldn't be trying to a quadratic relationship with a logarithmic. So, how could we evaluate how well a regression fits the data? Well, we try to minimize the variance of the residuals, so maybe that could be our function?</p>
-  <p>Unfortunatly, this has some problems. For a data set with a starting high variation, no matter what kind of regression you use, the variation of our error function will also be high. This can be fixed by dividing out the starting variation, giving us \[\frac{\text{var}(\hat{y})}{\text{var}(y)} = \frac{\sum (y_i-\hat{y}_i)^2}{\sum (y_i-\bar{y})^2}\]</p>
+  <p>So, I've introduced all these ways to find different functions that can match the sample. But which one should you use for a particular data set? It goes without saying, you shouldn't be trying to a quadratic relationship with a data set that looks logarithmic. But, how could we quantify how well a regression fits the data? Well, since we minimize the variance of the residuals, so that could be a good measure for the quality of the fit?</p>
+  <p>Yes, though it requires a minor tweak. For a data set with a starting high variation, no matter what kind of regression you use, the variation of our error function will also be high. This can be fixed by dividing out the starting variation, giving us \[\frac{\text{var}(\hat{y})}{\text{var}(y)} = \frac{\sum (y_i-\hat{y}_i)^2}{\sum (y_i-\bar{y})^2}\]</p>
   <p>One last touch. Better fits mean lower residual variation, so our expression goes toward 0. To change this, we just subtract it from 1, so numbers near 1 indicate good association, while numbers near 0 indicate bad association. In the end, \[R^2 = 1 - \frac{\sum (y_i-\hat{y}_i)^2}{\sum (y_i-\bar{y})^2}\] giving us the well-known <em>Correlation of Determination</em>. Although it's written as \(R^2\), it can be negative if the prediction is bad enough that the model <em>adds</em> more variance into the system, rather than reducing variance.</p>
   <p>In linear regressions with only one input parameter, it is also useful to know whether the association is positive or negative. For this we have \(r\), which is just the square root of the Coefficient of Determination, and negative or postive depending on whether the slope of the line is positive or negative.</p>
   <p>Why they didn't just call the coefficient of determination \(r^2\), I don't know. But these two indicators can tell you a lot about the regression itself. For our example at the start, these coefficients are \(R^2\approx0.97764\), and \(r\approx0.98875\), indicating a strong positive relationship between x and y, so a linear regression is probably the best regression for the job.</p>
   <p><br></p>
 <h2>Gradient Descent Simulation</h2>
-<p>Below is a crude simulation on how gradient descent works. The model starts out with random parameters for the data, leading to really bad fits, which can be seen in the \(R^2\) value. Pressing the "+Step" button moves the point in the direction of steepest descent to minimize the error function. The error function itself is shown as a 3D surface. I would recommend using "+Step" for the first few iterations, so you can see how the model starts moving in the general direction of the minimum. After that, you can use "+40 Steps" to watch it home in on the minimum. Refresh the page to try different types of regressions i.e. logarithmic, exponential, powers, etc.</p>
+<p>Below is a simple simulation on how gradient descent works. The model starts out with random parameters for the data, leading to really bad fits, which can be seen in the \(R^2\) value. Pressing the "+Step" button moves the point in the direction of steepest descent (from red to blue on the vector field) to minimize the error function. The error function itself is shown as a 3D surface. I would recommend using "+Step" for the first few iterations, so you can see how the model starts moving in the general direction of the minimum. After that, you can use "+40 Steps" to watch it home in on the minimum. Refresh the page to try different types of regressions i.e. logarithmic, exponential, powers, etc.</p>
   <div class="GradientDescent">
     <iframe src="zGradientDescent.html" style="border:none; text-align: center; width: 85vw; height: 1200px"></iframe>
   </div>
