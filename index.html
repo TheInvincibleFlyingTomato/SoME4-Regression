@@ -86,7 +86,7 @@
 <figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdX0R1teRJvQ6SWCHdY1uHFHuzYQJZKNSyAtGiyAvCtxJ9M7L9F0iBcpfUDigvOToo0i3jN-jC0gKn1AxD5JmDxhpg-8CXhPXoEaTLgnsuZ-sqaAjwWBc_fSG9qKOxXD9HAT4cxmQ?key=Htpd89bIWzeNbhCquZM3fw">
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcdoh7VjG05KqHXBNVHZXmmRBpJOwJvIKYJhwjjvqeDdorxR1-Fwp3vo3C41NandlpsqjuUmrfg27r3afVwxbL5bN0cV4c9tk26CQ5NbNbolaWkK-dFYzW70i_5HzLgFcmrpSN9kA?key=Htpd89bIWzeNbhCquZM3fw">
-<figcaption style="font-size: 0.8em; color: gray;">Source: Noise by Cass R. Sunstein, Daniel Kahneman, and Olivier Sibony</figcaption>
+<figcaption style="font-size: 0.8em; color: gray;">Source: Noise: A Flaw in Human Judgment by Cass R. Sunstein, Daniel Kahneman, and Olivier Sibony</figcaption>
 </figure>
 
 
@@ -132,7 +132,11 @@
 
 <p>This allows for a geometric view using vector span.</p>
 <p>
+<figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeJPYms1BJ15AF7NPtqY2vRUue-inhs6Ua-WkXW1pbNCraJnAGf5pEJt1D5Ey_U77h7470WUHSwGymiUZTl0OAAW4giFFR1NKLtNPkRN_oYqrAkET9kAGFGoz2Ed31EQA7SzrPqvg?key=Htpd89bIWzeNbhCquZM3fw" alt="diagram" class="wrap" width="50vw"/>
+<figcaption style="font-size: 0.6em; color: gray;">Source: Wikipedia</figcaption>
+</figure>
+  
 In the diagram to the right, the green area represents the column space of \(\textbf{X}\). The column space is the span of the columns of \(\textbf{X}\). Simply put, it is the space where all possible vectors \(\hat{y}=\textbf{X}\beta\) live.  For the sake of visualization, the diagram is a 2D plane in a 3D space. Since \(y\) is usually not on the column space, any \(\hat{y}\) will be slightly off from the actual \(y\). This residual vector will be \(\varepsilon = y - \hat{y} = y - \textbf{X}\beta\). The goal is to minimize this vector’s length, or \(||\varepsilon||\). Since this is positive, it works to minimize \(||\varepsilon||^2\) instead. This works better by avoiding square roots. Also, notice that this is the same thing as our sum of the squares method, since this equals \(e^2_1+e^2_2+\dots+e^2_n = \sum_{i=1}^{n} (y-\hat{y})^2\).
 </p>
   <p>Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
@@ -198,7 +202,7 @@ But, for now, I think I’ll stick with drawing lines through points.
 <p>1. Simplest description of smearing estimators I could find: <a href="https://en.wikipedia.org/wiki/Smearing_retransformation" target="_blank"> Smearing Estimators </a> </p> 
 <p>2. Wikipedia's Series on Regression Analysis: <a href="https://en.wikipedia.org/wiki/Regression_analysis" target="_blank">Regression Analysis</a> </p> 
 <p>3. An actual formula for calculating linear regressions: <a href="https://github.com/TheInvincibleFlyingTomato/SoME4-Regression/blob/main/AnExactFormulaForLR.pdf" target="_blank">An Exact Formula for Linear Regressions</a> </p> 
-
-
+<p>4. Desmos: <a href="https://www.desmos.com/calculator" target="_blank">2D Graphing Calculator</a></p>
+<p>5. Desmos 3D: <a href="https://www.desmos.com/3d" target="_blank">3D Graphing Calculator</a></p>
 </body>
 </html>
