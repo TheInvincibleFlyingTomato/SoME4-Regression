@@ -175,7 +175,7 @@ In the diagram to the right, the green area represents the column space of \(\te
     <br>
 </p>
 <h2>How well are we doing?</h2>
-  <p>So, I've introduced all these ways to find different functions that can match the sample. But which one should you use for a particular data set? It goes without saying, you shouldn't be trying to a quadratic relationship with a data set that looks logarithmic. But, how could we quantify how well a regression fits the data? Well, since we minimize the variance of the residuals, so that could be a good measure for the quality of the fit?</p>
+  <p>So, I've introduced all these ways to find different functions that can match the sample. But which one should you use for a particular data set? It goes without saying, you shouldn't be trying to a quadratic relationship with a data set that looks logarithmic. But, how could we quantify how well a regression fits the data? Well, we minimize the variance of the residuals, so that could be a good measure for the quality of the fit?</p>
   <p>Yes, though it requires a minor tweak. For a data set with a starting high variation, no matter what kind of regression you use, the variation of our error function will also be high. This can be fixed by dividing out the starting variation, giving us \[\frac{\text{var}(\hat{y})}{\text{var}(y)} = \frac{\sum (y_i-\hat{y}_i)^2}{\sum (y_i-\bar{y})^2}\]</p>
   <p>One last touch. Better fits mean lower residual variation, so our expression goes toward 0. To change this, we just subtract it from 1, so numbers near 1 indicate good association, while numbers near 0 indicate bad association. In the end, \[R^2 = 1 - \frac{\sum (y_i-\hat{y}_i)^2}{\sum (y_i-\bar{y})^2}\] giving us the well-known <em>Correlation of Determination</em>. Although it's written as \(R^2\), it can be negative if the prediction is bad enough that the model <em>adds</em> more variance into the system, rather than reducing variance.</p>
   <p>In linear regressions with only one input parameter, it is also useful to know whether the association is positive or negative. For this we have \(r\), which is just the square root of the Coefficient of Determination, and negative or postive depending on whether the slope of the line is positive or negative.</p>
@@ -189,8 +189,8 @@ In the diagram to the right, the green area represents the column space of \(\te
     <h2>Summary</h2>
 <p>So, now to answer the age old question in math: <br> 
   When will I ever use this?<br>
-<em>Artificial Intelligence</em>. If you’ve ever used ChatGPT, or Google Gemini before, you were, unintentionally, relying on linear regressions. They are used to train the intelligence, test it, and even evaluate how well it performed on said tests. This is called supervised learning, and it is used in many large neural networks.
-<br>Regressions are powerful tools in applied math. Built from the fundamentals of probability and refined with calculus, they are used in a wide range of subjects. They have been used for centuries, and, despite their limitations, provide models that underpin many modern advancements. In fact, the field of regression analysis is still developing new methods to overcome its limitations.
+<em>Anytime you have data</em>. Regressions are used to predict housing prices, diagnose patients based on symptoms, forecast the weather, and even train artificial intelligence. Whenever you need to find an association in a set of data, regressions can be used.
+<br>Regressions are powerful tools in applied math. Built from the fundamentals of probability and refined with calculus, they are used in a wide range of subjects. They have been used for centuries, and, despite their limitations, provide models that underpin many modern advancements. In fact, the field of regression analysis is still developing new methods to overcome its limitations.<br>
 But, for now, I think I’ll stick with drawing lines through points.  
 </p>
 <p></p>
