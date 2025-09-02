@@ -182,11 +182,11 @@ In the diagram to the right, the green area represents the column space of \(\te
   <p>Why they didn't just call the coefficient of determination \(r^2\), I don't know. But these two indicators can tell you a lot about the regression itself. For our example at the start, these coefficients are \(R^2\approx0.97764\), and \(r\approx0.98875\), indicating a strong positive relationship between x and y, so a linear regression is probably the best regression for the job.</p>
   <p><br></p>
 <h2>Gradient Descent Simulation</h2>
-<p>Below is a simple simulation on how gradient descent works. The model starts out with random parameters for the data, leading to really bad fits, which can be seen in the \(R^2\) value. Pressing the "+Step" button moves the point in the direction of steepest descent (from red to blue on the vector field) to minimize the error function. The error function itself is shown as a 3D surface. I would recommend using "+Step" for the first few iterations, so you can see how the model starts moving in the general direction of the minimum. After that, you can use "+40 Steps" to watch it home in on the minimum. Refresh the page to try different types of regressions i.e. logarithmic, exponential, powers, etc.</p>
+<p>Below is a simple simulation on how gradient descent works. The model starts out with random guesses for the parameters, leading to really bad fits, which can be seen in the \(R^2\) value. Pressing the "+Step" button moves the point in the direction of steepest descent to minimize the error function. The error function itself is shown as a 3D surface. I would recommend using "+Step" for the first few iterations, so you can see how the model starts moving in the general direction of the minimum. After that, you can use "+40 Steps" to watch it home in on the minimum. Refresh the page to try different types of regressions i.e. logarithmic, exponential, powers, etc.</p>
   <div class="GradientDescent">
     <iframe src="zGradientDescent.html" style="border:none; text-align: center; width: 85vw; height: 1200px"></iframe>
   </div>
-    <h2>Summary</h2>
+  <h2>Summary</h2>
 <p>So, now to answer the age old question in math: <br> 
   When will I ever use this?<br>
 <em>Anytime you have data</em>. Regressions are used to predict housing prices, diagnose patients based on symptoms, forecast the weather, and even train artificial intelligence. Whenever you need to find an association in a set of data, regressions can be used.
