@@ -132,12 +132,10 @@
 
 <p>This allows for a geometric view using vector span.</p>
 <p>
-<figure>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeJPYms1BJ15AF7NPtqY2vRUue-inhs6Ua-WkXW1pbNCraJnAGf5pEJt1D5Ey_U77h7470WUHSwGymiUZTl0OAAW4giFFR1NKLtNPkRN_oYqrAkET9kAGFGoz2Ed31EQA7SzrPqvg?key=Htpd89bIWzeNbhCquZM3fw" alt="diagram" class="wrap" width="50vw"/>
-<figcaption style="font-size: 0.6em; color: gray;">Source: Wikipedia</figcaption>
-</figure>
+
   
-In the diagram to the right, the green area represents the column space of \(\textbf{X}\). The column space is the span of the columns of \(\textbf{X}\). Simply put, it is the space where all possible vectors \(\hat{y}=\textbf{X}\beta\) live.  For the sake of visualization, the diagram is a 2D plane in a 3D space. Since \(y\) is usually not on the column space, any \(\hat{y}\) will be slightly off from the actual \(y\). This residual vector will be \(\varepsilon = y - \hat{y} = y - \textbf{X}\beta\). The goal is to minimize this vector’s length, or \(||\varepsilon||\). Since this is positive, it works to minimize \(||\varepsilon||^2\) instead. This works better by avoiding square roots. Also, notice that this is the same thing as our sum of the squares method, since this equals \(e^2_1+e^2_2+\dots+e^2_n = \sum_{i=1}^{n} (y-\hat{y})^2\).
+In the diagram to the right (Image Source: Wikipedia), the green area represents the column space of \(\textbf{X}\). The column space is the span of the columns of \(\textbf{X}\). Simply put, it is the space where all possible vectors \(\hat{y}=\textbf{X}\beta\) live.  For the sake of visualization, the diagram is a 2D plane in a 3D space. Since \(y\) is usually not on the column space, any \(\hat{y}\) will be slightly off from the actual \(y\). This residual vector will be \(\varepsilon = y - \hat{y} = y - \textbf{X}\beta\). The goal is to minimize this vector’s length, or \(||\varepsilon||\). Since this is positive, it works to minimize \(||\varepsilon||^2\) instead. This works better by avoiding square roots. Also, notice that this is the same thing as our sum of the squares method, since this equals \(e^2_1+e^2_2+\dots+e^2_n = \sum_{i=1}^{n} (y-\hat{y})^2\).
 </p>
   <p>Thus, by projecting y into the space of possible predictions, we’re guaranteed the smallest possible variance of errors. This proves that it minimizes the variation, and therefore satisfies the “Best” part of BLUE.</p>
 <p><br></p>
