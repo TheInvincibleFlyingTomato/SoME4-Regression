@@ -62,7 +62,12 @@
 
 
 <h2>Linear Regressions</h2>
-<p>So, why don't we sit down and work out an example of linear regression - linear fits are one of the simplest and most frequently used regression models. Let our points be \(p ={(0,3), (2, 5), (4, 9), (6,10), (11, 20)}\). We can define a output function \(g(x)\) that matches the data: \(g(0)= 3, g(2) = 5\), and so on. Let's call the relation function \(f(x)\). It would seem logical to try to minimize some error function between the two functions, giving us the optimal line. However, then we run into a problem.</p>
+<p>So, why don't we sit down and work out an example of linear regression
+  - linear fits are one of the simplest and most frequently used regression models. 
+  Let our points be \[p={(0,3), (2, 5), (4, 9), (6,10), (11, 20)}\] 
+  We can define a output function \(g(x)\) that matches the data: \(g(0)= 3, g(2) = 5\), and so on.
+  Let's call the relation function \(f(x)\). It would seem logical to try to minimize some error function between the two functions,
+  giving us the optimal line. However, then we run into a problem.</p>
 <p><em>What should the error function be?</em>
 </p>
 <p>
@@ -99,11 +104,10 @@
 </p>
     
 <h2>Finishing the Example</h2>
-<p>Let's apply the method of least squares to our example. Since \(f(x)\) is a linear function, we can write it as \(f(x)=ax+b\) </p>
-<p>The residuals are then: \(r_i= ax_i+b-g(x_i)\).</p>
-<p>So the error function becomes: \(\sum_{i=1}^{n} r^2_i = \sum_{i=1}^{n} (ax_i+b-g(x_i))^2= (0(a)+b -3 )^2+((2)a+b-5)^2+ \dots +((11)a+b-20)^2\)</p>
+<p>Let's apply the method of least squares to our example. Since \(f(x)\) is a linear function, we can write it as \(f(x)=ax+b\). The residuals are then: \(r_i= ax_i+b-g(x_i)\).</p>
+<p>So the error function becomes: \[\sum_{i=1}^{n} r^2_i = \sum_{i=1}^{n} (ax_i+b-g(x_i))^2\] \[= (0(a)+b -3 )^2+((2)a+b-5)^2+ \dots +((11)a+b-20)^2\]</p>
 <p>Expanding and simplifying, we end up with a big quadratic expression in a and b:</p>
-<p>\(\sum_{i=1}^{n} r^2_i = 177a^2 + 46ab + 5b^2 - 652a - 94b + 615\). </p>
+<p>\[\sum_{i=1}^{n} r^2_i = 177a^2 + 46ab + 5b^2 - 652a - 94b + 615\] </p>
 <p>This large error function traces out a multivariable function that looks a lot like a parabola. This shouldn’t be too surprising, given that our function contains quadratic terms of a and b.</p>
 <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdOMuI9Gg8i1ZCZuDZROJmGKjRRQLuztSOPXdibpxjGwN5DOnlPOS_5B-bmmob7Ka1ZVx4wGocXfG0tJFi9pDDGwJZSNz_RKgtZr5PR8sCZE0VSAVUqIGy3a6P7C9cq0Hpuejv9jA?key=Htpd89bIWzeNbhCquZM3fw" style = "width: 21vw">
 <p>
